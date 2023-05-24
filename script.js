@@ -43,6 +43,8 @@ function formatTime(lapsedTime){
 // Stop the timer
 function stopTimer(){
   clearInterval(timerInterval);
+  startEl.disabled = false;
+  stopEl.disabled = true;
 }
 
 

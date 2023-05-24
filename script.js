@@ -3,39 +3,41 @@ const stopEl = document.getElementById("stop");
 const resetEl = document.getElementById("reset");
 const timerEl = document.getElementById("timer");
 
-let interval;
-let timeLeft = 1500;
-
-function updateTimer() {
-  let minutes = Math.floor(timeLeft / 60);
-  let seconds = timeLeft % 60;
-  let milliseconds = (timeLeft % 1) * 100;
-  let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds
-    .toString()
-    .padStart(2, "0")}:${milliseconds.toString().padStart(2, "0")}`;
-
-  timerEl.innerHTML = formattedTime;
-}
+let startTime = 0;
+let lapsedTime = 0;
+let timerInterval;
 
 function startTimer() {
-  interval = setInterval(() => {
-    timeLeft--;
-    updateTimer();
-    if (timeLeft === 0) {
-      clearInterval(interval);
-      alert("Time's up!");
-      timeLeft = 1500;
-      updateTimer();
-    }
-  }, 1000);
+  startTime = Date.now() - lapsedTime
+  
+  timerInterval = setInterval(() => {
+    lapsedTime = Date.now() - startTime
+    timerEl.textContent = formatTime(lapsedTime);
+  }, 10)
 }
-function stopTimer() {
-  clearInterval(interval);
+
+function formatTime(lapsedTime){
+  const milliseconds = Math.floor((lapsedTime % 1000) / 10);
+  const seconds = Math.floor(lapsedTime % (1000 * 60) / 1000);
+  const minutes = Math.floor(lapsedTime % (1000 * 60 * 60) / (1000 * 60));
+  const hours = Math.floor(lapsedTime / (1000 * 60 * 60));
+  return (
+    (hours ? (hours > 9 ? hours : "0" + hours) : "00")
+    + ":" +
+    (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00")
+    + ":" +
+    (seconds ? (seconds > 9 ? seconds : "0" + seconds) : "00")
+    + ":" +
+    (milliseconds > 9 ? milliseconds : "0" + milliseconds)
+  )
 }
+
+function stopTimer(){
+  console.log("stop");
+}
+
 function resetTimer() {
-  clearInterval(interval);
-  timeLeft = 1500;
-  updateTimer();
+  console.log("reset");
 }
 
 

@@ -18,8 +18,8 @@ function startTimer() {
     timerEl.textContent = formatTime(lapsedTime);
   }, 10)
 
-  startButtonEl.disabled = true;
-  stopButtonEl.disabled = false;
+  startEl.disabled = true;
+  stopEl.disabled = false;
 }
 
 // Format the time
@@ -50,8 +50,8 @@ function stopTimer(){
 function resetTimer() {
   clearInterval(timerInterval);
   timerEl.textContent = "00:00:00:00";
-  startButtonEl.disabled = false;
-  stopButtonEl.disabled = true;
+  startEl.disabled = false;
+  stopEl.disabled = true;
   lapsedTime = 0;
 }
 

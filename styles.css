@@ -8,11 +8,16 @@ body {
 	background: slategray;
 }
 
-header {
-	margin: 0px;
+.container header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 10px;
 	background: #333;
-	width: 100%;
+	width: 100vw;
+	border-bottom: 1px solid pink;
+	box-shadow: 0px 0px 10px 0px pink;
+
 }
 
 header h1 {
@@ -26,12 +31,15 @@ header h1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 10px;
-	padding: 10px;
-	background: #333;
 	color: white;
-	width: 100%;
-	font-size: 50px;
+	width: 100vw;
+	height: 50vh;
+	font-size: 5rem;
+	font-weight: 700;
+	text-shadow: 2px 2px pink;
+	padding: 0px;
+	/* border: 1px solid white; */
+
 }
 
 /* buttons */
@@ -39,10 +47,9 @@ header h1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 10px;
 	padding: 10px;
-	background: #333;
-	width: 100%;
+	/* background: #333; */
+	width: 100vw;
   
 }
 
@@ -51,16 +58,19 @@ button {
 	padding: 10px;
 	background: #333;
 	color: white;
-	border: 1px solid white;
+	border: 1px solid pink;
+	box-shadow: 1px 1px 5px pink;
 	border-radius: 5px;
 	font-size: 20px;
-  text-transform: uppercase;
+  	text-transform: uppercase;
 	cursor: pointer;
+	transition: all 0.2s;
 }
 
 button:hover {
 	background: white;
-  box-shadow: 0px 0px 10px 0px white;
+	border: 1px solid white;
+  	box-shadow: 0px 0px 10px 0px white;
 	color: #333;
 }
 
@@ -73,6 +83,8 @@ footer {
 	color: #fff;
 	padding: 20px 10px;
 	text-align: center;
+	border-top: 1px solid pink;
+	box-shadow: 0px 0px 10px 0px pink;
 }
 
 footer .heart {
@@ -90,4 +102,17 @@ footer p a {
 
 footer p a:hover {
 	color: green;
+}
+
+/* media queries */
+@media (max-width: 700px) {
+	#timer {
+		font-size: 3rem;
+	}
+
+	button {
+		font-size: 1.5rem;
+		padding: 1rem 2rem;
+	}
+
 }
